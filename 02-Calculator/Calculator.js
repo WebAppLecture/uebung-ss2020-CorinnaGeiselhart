@@ -1,5 +1,6 @@
 import {MyMath} from "../01-MyMath/MyMath.js";
 
+
 export class Calculator {
 
     constructor(numpad, outputCalculation, outputSolution) {
@@ -10,13 +11,13 @@ export class Calculator {
     }
 
     setupNumPad() { 
-        this.numPad.children.array.forEach(element => {
-            element.addEventListener("click", this.onButtonClick.bind(this));
+        this.numPad.children.forEach(element => {
+            element.addEventListener("click", this.onButtonClick.bind(this, element.innerText));
         });
     }
 
-    onButtonClick() {
-        this.printSolution(this.innerText);
+    onButtonClick(symbol) {
+        this.printSolution(symbol.innerText);
         console.log(this);
     }
 
