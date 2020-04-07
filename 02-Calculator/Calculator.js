@@ -11,7 +11,7 @@ export class Calculator {
     }
 
     setupNumPad() { 
-        this.numPad.children.array.forEach(element => {
+        this.numPad.children.forEach(element => {
             element.addEventListener("click", this.onButtonClick.bind(this, element.innerText));
         });
     }
