@@ -11,14 +11,14 @@ export class Calculator {
     }
 
     setupNumPad() { 
-        this.numPad.children.forEach(element => {
+        this.numPad.children.array.forEach(element => {
             element.addEventListener("click", this.onButtonClick.bind(this, element.innerText));
         });
     }
 
     onButtonClick(symbol) {
-        this.printSolution(symbol.innerText);
-        console.log(this);
+        this.printSolution(symbol);
+        console.log(symbol);
     }
 
     print(string) {
