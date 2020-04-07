@@ -51,11 +51,16 @@ export class MyMath {
             }
             return this;
         } else {
-            return "Kein valide Potenz. Nur postive Zahlen werden akzeptiert";
+            alert("Kein valide Potenz. Nur postive Zahlen werden akzeptiert");
         }
     }
 
     faculty() {
+        if(this.value % 1 === 0){
+            for(let i = (this.value - 1); i > 0; i --){
+                this.value *=i;
+            }
+        }
         return this;
     }
 }
