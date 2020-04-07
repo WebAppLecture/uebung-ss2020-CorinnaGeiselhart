@@ -11,9 +11,16 @@ export class Calculator {
     }
 
     setupNumPad() { 
-        this.numPad.children.forEach(element => {
-            element.addEventListener("click", this.onButtonClick.bind(this, element.innerText));
-        });
+        let numpadLength = this.numPad.children.length;
+        for(let i = 0; i < numpadLength; i++) {
+            let number = this.numPad.children[i];
+            let numberInnerText = number.innerText;
+            
+            if(numberInnerText !== ""){
+                console.log(numberInnerText);
+                number.addEventListener("click", this.onButtonClick.bind(this, numberInnerText)); 
+            }  
+        }
     }
 
     onButtonClick(symbol) {
