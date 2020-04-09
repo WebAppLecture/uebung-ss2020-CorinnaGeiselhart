@@ -4,21 +4,23 @@ import{ Paddle } from "./Pong.js"
 
 export class FallingStones extends GameTemplate {
 
-    start() {
-        this.widthObjects = 50;
-        
+    start() {        
+        //game state
         this.gameOver = false;
         this.points = 0;
+        this.lives = 5;     
         
-
-        this.player = new Paddle(170, 450, this.widthObjects, 50, 8);
+        //player
+        this.sizePlayer = 50;
+        this.player = new Paddle(170, 450, this.sizePlayer, this.sizePlayer, 8);
+        
         //bullets
         this.bullets = [];
         this.countBullet = 0;
         
         //stones
         this.stones = [];
-        this.distanceStones = 50;
+        this.distanceStones = 80;
 
     }
 
@@ -35,6 +37,13 @@ export class FallingStones extends GameTemplate {
         this.player.update(ctx);
         this.updateBullets(ctx);
         this.updateStones(ctx);
+        this.checkGameState();
+    }
+
+    checkGameState(){
+        if(this.lives <= 0){
+            this.gameOver = true;
+        }
     }
 
     draw(ctx) {
@@ -51,31 +60,50 @@ export class FallingStones extends GameTemplate {
         this.countBullet--;
     }
 
-    updateBullets(ctx){
-        if(this.distanceStones == 50){
-            this.createRandomStones(ctx);
-        }
+    updateBullets(ctx){    
         this.bullets.forEach(object => {
             object.update(ctx);
         });
-        this.distanceStones--;
-        if(this.distanceStones == 0){
-            this.distanceStones = 50;
-        }
- 
+        //TODO: destroy stone and bullet on collision with bullet (also: count points)
     }
 
     createRandomStones(ctx){
-        let height = Math.random() * 80;
-        let width = this.widthObjects;
+        //random size and x-position
+        let height = Math.random() * (60-20) + 20,
+            width = Math.random() * (50-40) + 40;
         let positionX = Math.random() *(ctx.canvas.width -width);
-        this.stones.push(new MovableGameObject(positionX, 0-height, width, height, "#333333", 0, 5))
+        //random speed
+        let speed = Math.random() * (3-1) + 1;
+
+        this.stones.push(new MovableGameObject(positionX, 0-height, width, height, "#333333", 0, 3))
     }
 
     updateStones(ctx){
         this.stones.forEach(stone => {
-        stone.update(ctx);
+            stone.update(ctx);
         });
+        
+        // destroy Stone on collision with canvas
+        this.destroyStones(ctx);
+
+
+        if(this.distanceStones == 80){
+            this.createRandomStones(ctx);
+        }        
+        this.distanceStones--;
+        if(this.distanceStones == 0){
+            this.distanceStones = 80;
+        }
+        
+    }
+
+    destroyStones(ctx){
+        for(let i = this.stones.length; i--;){
+            if(this.stones[i].y >= ctx.canvas.height){
+                this.stones.splice(i, 1);
+                this.lives--;
+            }
+        }
     }
 
     static get NAME(){
