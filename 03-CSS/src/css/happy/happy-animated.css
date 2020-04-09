@@ -1,0 +1,59 @@
+.new{
+    
+}
+
+.triangle{
+    position: absolute;
+    right: 12.4vh;
+    bottom: 6.9vh;
+    width: 0; 
+    height: 0; 
+    border-bottom-right-radius: 30%;
+    border-bottom-left-radius: 35%;
+    border-left: 0.7vh solid transparent;
+    border-right: 0.7vh solid transparent;
+    border-bottom: 1vh solid red;
+}
+
+.upper{
+    position: absolute;
+    right: 10vh;
+    bottom: 11.7vh;
+    height: 3.5vh;
+    width: 6vh;
+
+    /* Hintergrund */
+    background: linear-gradient(120deg, red 20%, orange 80%, rgb(255, 217, 0) 100%);
+    box-shadow: 0 0 0 0 transparent, 
+    0 0 0 0  transparent, 
+    1vh 0 1vh -1vh gray, 
+    -1vh 0 1vh -0.1vh gray;
+
+
+    border-top-left-radius: 3vh 100%;
+    border-top-right-radius: 3vh 100%;
+    border-bottom-right-radius: 0vh;
+    border-bottom-left-radius: 0vh;
+}
+
+.lower{
+    /*position: absolute;
+    right: 10vh;
+    bottom: 7.5vh;
+    height: 4.2vh;
+    width: 6vh; */
+
+    /* Hintergrund */
+    /*background: linear-gradient(78deg, red 10%, orange 80%, rgb(255, 217, 0) 100%);
+    box-shadow: 0 0px 0px 0px transparent, 
+    0 -9px 0px 0px  transparent, 
+    12px 0 15px -4px gray, 
+    -12px 0 15px -4px gray; */
+
+    /* Border */
+    /*border-top-left-radius: 0vh;
+    border-top-right-radius: 0vh;
+    border-bottom-right-radius: 3vh 100%;
+    border-bottom-left-radius: 3vh 100%;*/
+}
+

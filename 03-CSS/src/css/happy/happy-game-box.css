@@ -26,6 +26,7 @@ body {
 }
 
 .accent:before {
+
     font-size: 4vh;
     font-family: sans-serif;
     content: "smile";
