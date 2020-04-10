@@ -68,6 +68,7 @@ export class FallingStones extends GameTemplate {
     }
 
     createRandomStones(ctx){
+       //TODO random auslagern in Funktion
         //random size and x-position
         let height = Math.random() * (60-20) + 20,
             width = Math.random() * (50-40) + 40;
